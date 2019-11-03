@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF72A0F8236E469C00760466 /* loginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF72A0F7236E469C00760466 /* loginViewModel.swift */; };
 		DFCE16B4236E1AFA00CDBAB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B3236E1AFA00CDBAB8 /* AppDelegate.swift */; };
 		DFCE16B6236E1AFA00CDBAB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B5236E1AFA00CDBAB8 /* SceneDelegate.swift */; };
 		DFCE16B8236E1AFA00CDBAB8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B7236E1AFA00CDBAB8 /* ContentView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF72A0F7236E469C00760466 /* loginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewModel.swift; sourceTree = "<group>"; };
 		DFCE16B0236E1AFA00CDBAB8 /* TutorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFCE16B3236E1AFA00CDBAB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFCE16B5236E1AFA00CDBAB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				DFCE16BE236E1AFD00CDBAB8 /* LaunchScreen.storyboard */,
 				DFCE16C1236E1AFD00CDBAB8 /* Info.plist */,
 				DFCE16BB236E1AFD00CDBAB8 /* Preview Content */,
+				DF72A0F7236E469C00760466 /* loginViewModel.swift */,
 			);
 			path = TutorApp;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF72A0F8236E469C00760466 /* loginViewModel.swift in Sources */,
 				DFCE16B4236E1AFA00CDBAB8 /* AppDelegate.swift in Sources */,
 				DFCE16B6236E1AFA00CDBAB8 /* SceneDelegate.swift in Sources */,
 				DFCE16B8236E1AFA00CDBAB8 /* ContentView.swift in Sources */,
