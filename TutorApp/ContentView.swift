@@ -12,11 +12,16 @@ struct ContentView: View {
     
     @State var username: String = ""
     @State var password: String = ""
+    @State var view: String = "viewLogin"
     let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
-
+    @State var subject: String = ""
+          
+           @State var area: String = ""
     
     var body: some View {
           
+        return Group {
+        if view  == "viewLogin"{
           VStack {
           WelcomeText()
             UserImage()
@@ -32,11 +37,40 @@ struct ContentView: View {
                             .cornerRadius(5.0)
                             .padding(.bottom, 20)
             
-             Button(action: {print("Button tapped")}) {
+            Button(action: {self.view = "Home"}) {
             LoginButtonContent()
                         }
           }.padding()
+            }
+            
+         if view  == "Home"{
+            Button(action: {self.view = "Register"}) {
+                                                LoginButtonContent()
+                                                            }
+            
+            }
+            if view  == "Register"{
+                
+                VStack {
+                        TextField("Tema", text: $subject)
+                                                     .padding()
+                                                     .background(lightGreyColor)
+                                                     .cornerRadius(5.0)
+                                                     .padding(.bottom, 20)
+                          TextField("Area", text: $area)
+                                                     .padding()
+                                                     .background(lightGreyColor)
+                                                     .cornerRadius(5.0)
+                                                     .padding(.bottom, 20)
+                          Button(action: {self.view = "Register"}) {
+                                                                        LoginButtonContent()
+                                                                                    }
+                        
+                      }
+                }
+            
       }
+         }
 }
 
 
