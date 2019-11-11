@@ -225,31 +225,40 @@ struct ContentView: View {
          if view  == "Home"{
             
             NavigationView {
-              HStack {
                 
-                Text("Mis temas de ensenanza")
-                                      .fontWeight(.semibold)
-                                      .padding(.bottom, 15)
-                                       .font(.system(size: 15))
-                
-            NavigationLink(destination: RegisterSubject()) {
-              
+                VStack{
+                    
+                    
+                    HStack {
+                                 
+                                  Text("Mis temas de ensenanza")
+                                                        .fontWeight(.semibold)
+                                                        .padding(.bottom, 15)
+                                                         .font(.system(size: 15))
                                   
-               
-                  RegisterSubjectButtonContent()
-                }
+                              NavigationLink(destination: RegisterSubject()) {
+                                
+                                                    
+                                 
+                                    RegisterSubjectButtonContent()
+                                  }
+                                  
+                                 NavigationLink(destination: ViewReservations()) {
+                                 
+                                                     
+                                  
+                                     ViewReservationButtonContent()
+                                   }
+                                  
+                                   }
+                                  
+                                SubjectListView()
+                                  }
                 
-               NavigationLink(destination: ViewReservations()) {
-               
-                                   
-                
-                   ViewReservationButtonContent()
-                 }
-                
-                 }
-                
-                
-                }
+                               
+                              
+                              }
+            
                 
                 
             }

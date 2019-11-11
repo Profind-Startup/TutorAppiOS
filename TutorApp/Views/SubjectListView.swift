@@ -16,6 +16,23 @@ struct SubjectRow: View {
   }
 }
 
+struct SubjectListView: View {
+  @ObservedObject private var subjectListViewModel = SubjectListViewModel()
+  
+  var body: some View {
+    List(self.subjectListViewModel.subjects) { subject in SubjectRow(subject: subject)
+      
+      }
+      
+  }
+}
+
+struct SubjectListView_Previews: PreviewProvider {
+  static var previews: some View {
+    SubjectListView()
+  }
+}
+
 
 
 
