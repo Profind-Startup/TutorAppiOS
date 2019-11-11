@@ -11,34 +11,189 @@ import SwiftUI
 struct ContentView: View {
     
     @State var username: String = ""
-    @State var password: String = ""
-    
-    @State var names: String = ""
-    @State var lastnames: String = ""
-     
-    @State var dni: String = ""
-    @State var telephone: String = ""
-    
-    @State var address: String = ""
-    @State var academicgroup: String = ""
-    @State var specialities: String = ""
-    
-    @State var creationdate: String = ""
-    @State var birthdate: String = ""
-         
+           @State var password: String = ""
+        
       
     @State var view: String = "viewLogin"
+  
     let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
-    @State var subject: String = ""
-          
-           @State var area: String = ""
+     
+   
     
+    struct HomeView: View {
+    
+       var body: some View {
+          Text("Mis temas de ensenanza")
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 15)
+                         .font(.system(size: 15))
+       }
+        
+        
+     }
+     struct RegisterSubject: View {
+     
+        let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
+          @State var subject: String = ""
+                
+                 @State var area: String = ""
+          @State var view2: String = "viewLogin"
+           
+        
+        var body: some View {
+            VStack {
+                                  TextField("Tema", text: $subject)
+                                                               .padding()
+                                                               .background(lightGreyColor)
+                                                               .cornerRadius(5.0)
+                                                               .padding(.bottom, 20)
+                                    TextField("Area", text: $area)
+                                                               .padding()
+                                                               .background(lightGreyColor)
+                                                               .cornerRadius(5.0)
+                                                               .padding(.bottom, 20)
+                              
+                                    Button(action: {self.view2 = "viewLogin"}) {
+                                  AddSubjectButtonContent()
+                                              }
+                                  
+                                }
+        }
+         
+         
+      }
+    
+    
+    struct ViewReservations: View {
+     var body: some View {
+       
+        Text("Mi calendario")
+                                   .font(.largeTitle)
+                                   .fontWeight(.semibold)
+                                   .padding(.bottom, 30)
+        }
+     }
+    
+    struct UserRegister: View {
+        
+        @State var username: String = ""
+          @State var password: String = ""
+          
+          @State var names: String = ""
+          @State var lastnames: String = ""
+           
+          @State var dni: String = ""
+          @State var telephone: String = ""
+          
+          @State var address: String = ""
+          @State var academicgroup: String = ""
+          @State var specialities: String = ""
+          
+          @State var creationdate: String = ""
+          @State var birthdate: String = ""
+        
+        @State var view2: String = "viewLogin"
+                  
+        let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
+        
+        
+        var body: some View {
+           VStack {
+                                   Text("Register")
+                                  .font(.largeTitle)
+                                  .fontWeight(.semibold)
+                                  .padding(.bottom, 1)
+               
+                                 TextField("Username", text: $username)
+                                                              .padding()
+                                                              .background(lightGreyColor)
+                                                              .cornerRadius(5.0)
+                                                              .padding(.bottom, 1)
+                                                               .font(.system(size: 15))
+                                   TextField("Password", text: $password)
+                                                              .padding()
+                                                              .background(lightGreyColor)
+                                                              .cornerRadius(5.0)
+                                                              .padding(.bottom, 1)
+                                                           .font(.system(size: 15))
+               
+                                   TextField("Nombres", text: $names)
+                                                              .padding()
+                                                              .background(lightGreyColor)
+                                                              .cornerRadius(5.0)
+                                                              .padding(.bottom, 1)
+                                                                .font(.system(size: 15))
+                HStack {
+                                   TextField("dni", text: $dni)
+                                                              .padding()
+                                                              .background(lightGreyColor)
+                                                              .cornerRadius(5.0)
+                                                              .padding(.bottom, 1)
+                                                            .font(.system(size: 15))
+                                   TextField("telephone", text: $telephone)
+                                                             .padding()
+                                                             .background(lightGreyColor)
+                                                             .cornerRadius(5.0)
+                                                             .padding(.bottom, 1)
+                                                            .font(.system(size: 15))
+                    }
+                                  TextField("address", text: $address)
+                                                             .padding()
+                                                             .background(lightGreyColor)
+                                                             .cornerRadius(5.0)
+                                                             .padding(.bottom, 1)
+                                                            .font(.system(size: 15))
+               HStack {
+                                   TextField("academicgroup", text: $academicgroup)
+                                                               .padding()
+                                                               .background(lightGreyColor)
+                                                               .cornerRadius(5.0)
+                                                               .padding(.bottom, 1)
+                                                                .font(.system(size: 15))
+                
+                                   TextField("creation date", text: $creationdate)
+                                                                                .padding()
+                                                                                .background(lightGreyColor)
+                                                                                .cornerRadius(5.0)
+                                                                                .padding(.bottom, 1)
+                                                                                 .font(.system(size: 15))
+                   }
+               HStack {
+                                    TextField("specialities", text: $specialities)
+                                                               .padding()
+                                                               .background(lightGreyColor)
+                                                               .cornerRadius(5.0)
+                                                               .padding(.bottom, 1)
+                                                              .font(.system(size: 15))
+                                   TextField("birth date", text: $birthdate)
+                                                              .padding()
+                                                              .background(lightGreyColor)
+                                                              .cornerRadius(5.0)
+                                                              .padding(.bottom, 1)
+                                                              .font(.system(size: 15))
+                
+                }
+                                 
+                      VStack {
+            Button(action: {self.view2 = "Home"}) {
+                      RegisterButtonContent()
+                }
+                          }
+       
+            
+               }
+                                  
+          
+           }
+        }
     var body: some View {
           
         return Group {
+            
         if view  == "viewLogin"{
+             NavigationView {
           VStack {
-          WelcomeText()
+         
             UserImage()
             
             TextField("Username", text: $username)
@@ -55,151 +210,51 @@ struct ContentView: View {
             Button(action: {self.view = "Home"}) {
             LoginButtonContent()
             }
-            
-            Button(action: {self.view = "UserRegister"}) {
-                     RegisterButtonContent()
-                     }
+            NavigationLink(destination: UserRegister()) {
+                        
+                                            
+                         
+                            RegisterButtonContent()
+                          }
+                          
+         
           }.padding()
+                 }
             }
             
          if view  == "Home"{
             
-              VStack {
-                Text("TutorApp")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .padding(.bottom, 30)
-            }
-            HStack{
-                                                      
+            NavigationView {
+              HStack {
+                
                 Text("Mis temas de ensenanza")
-                .fontWeight(.semibold)
-                .padding(.bottom, 15)
-                 .font(.system(size: 15))
-            Button(action: {self.view = "RegisterSubject"}) {
+                                      .fontWeight(.semibold)
+                                      .padding(.bottom, 15)
+                                       .font(.system(size: 15))
                 
-                
+            NavigationLink(destination: RegisterSubject()) {
+              
+                                  
+               
                   RegisterSubjectButtonContent()
                 }
-                Button(action: {self.view = "ViewReservations"}) {
-                               
-                               
-                                 ViewReservationButtonContent()
-                               }
-                               
                 
-             }
-            
-            
-            }
-            
-             if view == "ViewReservations"{
-                Text("Mi calendario")
-                            .font(.largeTitle)
-                            .fontWeight(.semibold)
-                            .padding(.bottom, 30)
-                 }
-            if view == "RegisterSubject"{
-                
-                VStack {
-                        TextField("Tema", text: $subject)
-                                                     .padding()
-                                                     .background(lightGreyColor)
-                                                     .cornerRadius(5.0)
-                                                     .padding(.bottom, 20)
-                          TextField("Area", text: $area)
-                                                     .padding()
-                                                     .background(lightGreyColor)
-                                                     .cornerRadius(5.0)
-                                                     .padding(.bottom, 20)
-                    
-                          Button(action: {self.view = "Home"}) {
-                        AddSubjectButtonContent()
-                                    }
-                        
-                      }
-                }
-            
-            if view == "UserRegister"{
-            
-                VStack {
-                                        Text("Register")
-                                       .font(.largeTitle)
-                                       .fontWeight(.semibold)
-                                       .padding(.bottom, 30)
-                    
-                                      TextField("Username", text: $username)
-                                                                   .padding()
-                                                                   .background(lightGreyColor)
-                                                                   .cornerRadius(5.0)
-                                                                   .padding(.bottom, 10)
-                                                                    .font(.system(size: 15))
-                                        TextField("Password", text: $password)
-                                                                   .padding()
-                                                                   .background(lightGreyColor)
-                                                                   .cornerRadius(5.0)
-                                                                   .padding(.bottom, 10)
-                                                                .font(.system(size: 15))
-                    
-                                        TextField("Nombres", text: $names)
-                                                                   .padding()
-                                                                   .background(lightGreyColor)
-                                                                   .cornerRadius(5.0)
-                                                                   .padding(.bottom, 10)
-                    
-                     HStack {
-                                        TextField("dni", text: $dni)
-                                                                   .padding()
-                                                                   .background(lightGreyColor)
-                                                                   .cornerRadius(5.0)
-                                                                   .padding(.bottom, 10)
-                                        TextField("telephone", text: $telephone)
-                                                                  .padding()
-                                                                  .background(lightGreyColor)
-                                                                  .cornerRadius(5.0)
-                                                                  .padding(.bottom, 10)
-                         }
-                                       TextField("address", text: $address)
-                                                                  .padding()
-                                                                  .background(lightGreyColor)
-                                                                  .cornerRadius(5.0)
-                                                                  .padding(.bottom, 10)
-                    HStack {
-                                        TextField("academicgroup", text: $academicgroup)
-                                                                    .padding()
-                                                                    .background(lightGreyColor)
-                                                                    .cornerRadius(5.0)
-                                                                    .padding(.bottom, 10)
-                     
-                                        TextField("creation date", text: $creationdate)
-                                                                                     .padding()
-                                                                                     .background(lightGreyColor)
-                                                                                     .cornerRadius(5.0)
-                                                                                     .padding(.bottom, 10)
-                        }
-                    HStack {
-                                         TextField("specialities", text: $specialities)
-                                                                    .padding()
-                                                                    .background(lightGreyColor)
-                                                                    .cornerRadius(5.0)
-                                                                    .padding(.bottom, 10)
-                                      
-                                        TextField("birth date", text: $birthdate)
-                                                                   .padding()
-                                                                   .background(lightGreyColor)
-                                                                   .cornerRadius(5.0)
-                                                                   .padding(.bottom, 10)
-                     }
-                                      
-                                      
-                               }
-                Button(action: {self.view = "Home"}) {
-                   RegisterButtonContent()
-                    }
-                                       
+               NavigationLink(destination: ViewReservations()) {
                
+                                   
+                
+                   ViewReservationButtonContent()
+                 }
+                
+                 }
+                
+                
+                }
+                
+                
             }
-            
+                
+  
     }
 
 }

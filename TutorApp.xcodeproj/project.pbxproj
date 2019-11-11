@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DF72A0F8236E469C00760466 /* loginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF72A0F7236E469C00760466 /* loginViewModel.swift */; };
+		DFBAD7522378A74C00C4A210 /* TutorAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBAD7512378A74C00C4A210 /* TutorAppService.swift */; };
+		DFBAD7552378A7D800C4A210 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBAD7542378A7D800C4A210 /* Subject.swift */; };
+		DFBAD7582378A8FD00C4A210 /* SubjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBAD7572378A8FD00C4A210 /* SubjectViewModel.swift */; };
+		DFBAD75A2378C05600C4A210 /* SubjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBAD7592378C05600C4A210 /* SubjectListViewModel.swift */; };
+		DFBAD75F2378C2B700C4A210 /* SubjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBAD75E2378C2B700C4A210 /* SubjectListView.swift */; };
 		DFCE16B4236E1AFA00CDBAB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B3236E1AFA00CDBAB8 /* AppDelegate.swift */; };
 		DFCE16B6236E1AFA00CDBAB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B5236E1AFA00CDBAB8 /* SceneDelegate.swift */; };
 		DFCE16B8236E1AFA00CDBAB8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCE16B7236E1AFA00CDBAB8 /* ContentView.swift */; };
@@ -37,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		DF72A0F7236E469C00760466 /* loginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewModel.swift; sourceTree = "<group>"; };
+		DFBAD7512378A74C00C4A210 /* TutorAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAppService.swift; sourceTree = "<group>"; };
+		DFBAD7542378A7D800C4A210 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		DFBAD7572378A8FD00C4A210 /* SubjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewModel.swift; sourceTree = "<group>"; };
+		DFBAD7592378C05600C4A210 /* SubjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListViewModel.swift; sourceTree = "<group>"; };
+		DFBAD75E2378C2B700C4A210 /* SubjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListView.swift; sourceTree = "<group>"; };
 		DFCE16B0236E1AFA00CDBAB8 /* TutorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFCE16B3236E1AFA00CDBAB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFCE16B5236E1AFA00CDBAB8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +88,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DFBAD7502378A70D00C4A210 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFBAD7512378A74C00C4A210 /* TutorAppService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DFBAD7532378A79500C4A210 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFBAD7542378A7D800C4A210 /* Subject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFBAD7562378A8C600C4A210 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFBAD7572378A8FD00C4A210 /* SubjectViewModel.swift */,
+				DFBAD7592378C05600C4A210 /* SubjectListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DFBAD75D2378C23B00C4A210 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFBAD75E2378C2B700C4A210 /* SubjectListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DFCE16A7236E1AF900CDBAB8 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +144,10 @@
 		DFCE16B2236E1AFA00CDBAB8 /* TutorApp */ = {
 			isa = PBXGroup;
 			children = (
+				DFBAD75D2378C23B00C4A210 /* Views */,
+				DFBAD7562378A8C600C4A210 /* ViewModels */,
+				DFBAD7532378A79500C4A210 /* Models */,
+				DFBAD7502378A70D00C4A210 /* Services */,
 				DFCE16B3236E1AFA00CDBAB8 /* AppDelegate.swift */,
 				DFCE16B5236E1AFA00CDBAB8 /* SceneDelegate.swift */,
 				DFCE16B7236E1AFA00CDBAB8 /* ContentView.swift */,
@@ -270,9 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFBAD7582378A8FD00C4A210 /* SubjectViewModel.swift in Sources */,
 				DF72A0F8236E469C00760466 /* loginViewModel.swift in Sources */,
 				DFCE16B4236E1AFA00CDBAB8 /* AppDelegate.swift in Sources */,
+				DFBAD7522378A74C00C4A210 /* TutorAppService.swift in Sources */,
+				DFBAD75F2378C2B700C4A210 /* SubjectListView.swift in Sources */,
 				DFCE16B6236E1AFA00CDBAB8 /* SceneDelegate.swift in Sources */,
+				DFBAD75A2378C05600C4A210 /* SubjectListViewModel.swift in Sources */,
+				DFBAD7552378A7D800C4A210 /* Subject.swift in Sources */,
 				DFCE16B8236E1AFA00CDBAB8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
