@@ -99,18 +99,18 @@ struct ContentView: View {
         
         var body: some View {
            VStack {
-                                   Text("Register")
+                                   Text("Registro")
                                   .font(.largeTitle)
                                   .fontWeight(.semibold)
                                   .padding(.bottom, 1)
                
-                                 TextField("Username", text: $username)
+                                 TextField("Usuario", text: $username)
                                                               .padding()
                                                               .background(lightGreyColor)
                                                               .cornerRadius(5.0)
                                                               .padding(.bottom, 1)
                                                                .font(.system(size: 15))
-                                   TextField("Password", text: $password)
+                                   TextField("Contraseña", text: $password)
                                                               .padding()
                                                               .background(lightGreyColor)
                                                               .cornerRadius(5.0)
@@ -124,34 +124,34 @@ struct ContentView: View {
                                                               .padding(.bottom, 1)
                                                                 .font(.system(size: 15))
                 HStack {
-                                   TextField("dni", text: $dni)
+                                   TextField("DNI", text: $dni)
                                                               .padding()
                                                               .background(lightGreyColor)
                                                               .cornerRadius(5.0)
                                                               .padding(.bottom, 1)
                                                             .font(.system(size: 15))
-                                   TextField("telephone", text: $telephone)
+                                   TextField("Teléfono", text: $telephone)
                                                              .padding()
                                                              .background(lightGreyColor)
                                                              .cornerRadius(5.0)
                                                              .padding(.bottom, 1)
                                                             .font(.system(size: 15))
                     }
-                                  TextField("address", text: $address)
+                                  TextField("Dirección", text: $address)
                                                              .padding()
                                                              .background(lightGreyColor)
                                                              .cornerRadius(5.0)
                                                              .padding(.bottom, 1)
                                                             .font(.system(size: 15))
                HStack {
-                                   TextField("academicgroup", text: $academicgroup)
+                                   TextField("Grupo Académico", text: $academicgroup)
                                                                .padding()
                                                                .background(lightGreyColor)
                                                                .cornerRadius(5.0)
                                                                .padding(.bottom, 1)
                                                                 .font(.system(size: 15))
                 
-                                   TextField("creation date", text: $creationdate)
+                                   TextField("Fecha de creación", text: $creationdate)
                                                                                 .padding()
                                                                                 .background(lightGreyColor)
                                                                                 .cornerRadius(5.0)
@@ -159,13 +159,13 @@ struct ContentView: View {
                                                                                  .font(.system(size: 15))
                    }
                HStack {
-                                    TextField("specialities", text: $specialities)
+                                    TextField("Especialidades", text: $specialities)
                                                                .padding()
                                                                .background(lightGreyColor)
                                                                .cornerRadius(5.0)
                                                                .padding(.bottom, 1)
                                                               .font(.system(size: 15))
-                                   TextField("birth date", text: $birthdate)
+                                   TextField("Fecha de Nac.", text: $birthdate)
                                                               .padding()
                                                               .background(lightGreyColor)
                                                               .cornerRadius(5.0)
@@ -196,12 +196,12 @@ struct ContentView: View {
          
             UserImage()
             
-            TextField("Username", text: $username)
+            TextField("Usuario", text: $username)
                             .padding()
                             .background(lightGreyColor)
                             .cornerRadius(5.0)
                             .padding(.bottom, 20)
-            SecureField("Password", text: $password)
+            SecureField("Contraseña", text: $password)
                             .padding()
                             .background(lightGreyColor)
                             .cornerRadius(5.0)
@@ -231,7 +231,7 @@ struct ContentView: View {
                     
                     HStack {
                                  
-                                  Text("Mis temas de ensenanza")
+                                  Text("Mis temas de enseñanza")
                                                         .fontWeight(.semibold)
                                                         .padding(.bottom, 15)
                                                          .font(.system(size: 15))
@@ -322,7 +322,7 @@ struct LoginButtonContent: View {
     var body: some View {
            VStack {
         
-                      Text("LOGIN")
+                      Text("Iniciar Sesión")
                           .font(.headline)
                           .foregroundColor(.white)
                           .padding()
@@ -355,7 +355,7 @@ struct RegisterButtonContent: View {
     var body: some View {
            VStack {
         
-                      Text("REGISTER")
+                      Text("Registrarse")
                           .font(.headline)
                           .foregroundColor(.white)
                           .padding()
@@ -372,7 +372,7 @@ struct AddSubjectButtonContent: View {
     var body: some View {
            VStack {
         
-                      Text("ADD SUBJECT")
+                      Text("Agregar Tema")
                           .font(.headline)
                           .foregroundColor(.white)
                           .padding()
