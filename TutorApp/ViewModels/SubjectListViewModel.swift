@@ -13,6 +13,8 @@ class SubjectListViewModel: ObservableObject {
   @Published var subjects = [SubjectViewModel]()
   
   init() {
+    TutorAppService().postLogin { _ in   }
+           
     TutorAppService().getSubjects { subjects in
       
       if let subjects = subjects {

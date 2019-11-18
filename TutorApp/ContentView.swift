@@ -207,11 +207,13 @@ struct ContentView: View {
                             .cornerRadius(5.0)
                             .padding(.bottom, 20)
             
-            Button(action: {self.view = "Home"}) {
+            Button(action: {self.view = "Home"
+            }) {
+                
             LoginButtonContent()
             }
             NavigationLink(destination: UserRegister()) {
-                        
+                  
                                             
                          
                             RegisterButtonContent()
