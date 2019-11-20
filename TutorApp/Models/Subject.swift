@@ -15,7 +15,6 @@ struct Subject: Codable {
   var area: String
   var id_tutor: Int
   
-     
   init() {
     id = 0
     name = ""
