@@ -7,13 +7,65 @@
 //
 
 import SwiftUI
-import Combine
 
 
-    func checkDetails(username: String, password: String){
+func postSubjects(name: String, area: String){
+       var check = false
+    guard let url = URL(string: "http://tutorapp.somee.com/api/subjects") else
+       {
+return
+         
+     }
+     let body: [String: Any] = ["id": 0,"name": name,"area": area,"id_tutor": UserDefaults.standard.value(forKey: "id_tutor")]
+     
+     let finalBody = try! JSONSerialization.data(withJSONObject: body)
+     
+     var request = URLRequest(url: url)
+     request.httpMethod = "POST"
+     request.httpBody = finalBody
+     
+     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+     URLSession.shared.dataTask(with: request){ (data, response, error) in
+         print(data)
+         
+        
+     }.resume()
+   
+ }
+
+
+
+func checkTutor(user_id: Int) -> Bool{
+    
+    var check = false
+    guard let url = URL(string: "http://tutorapp.somee.com/api/Users/" + String(user_id) + "/Tutor") else
+       {
+return false
+         
+     }
+  
+     
+     URLSession.shared.dataTask(with: url){ (data, response, error) in
+         print(data)
+         
+         let tutor = try? JSONDecoder().decode(Tutor.self, from: data!)
+         DispatchQueue.main.async {
+          //  UserDefaults.standard.set(user.id, forKey: "user_id")
+            if(tutor?.id != nil)
+            {
+            print(tutor?.academic_group_name)
+             UserDefaults.standard.set(String(tutor!.id), forKey: "tutor_id")
+                check = true
+            }
+         }
+     }.resume()
+    return check
+ }
+    func checkDetails(username: String, password: String) -> Bool{
+          var check = false
        guard let url = URL(string: "http://tutorapp.somee.com/api/users/check") else
           {
-   return
+   return false
             
         }
         let body: [String: String] = ["address": "","password": password,"id": "0","last_names":"","username": username, "names":""]
@@ -32,10 +84,18 @@ import Combine
             DispatchQueue.main.async {
              //  UserDefaults.standard.set(user.id, forKey: "user_id")
                 print(user?.names)
-               UserDefaults.standard.set(1, forKey: "user_id")
+                if(user?.id != nil)
+                {
+                UserDefaults.standard.set(String(user!.id), forKey: "user_id")
                
+                if(checkTutor(user_id: user!.id))
+                    {
+                    check = true
+                    }
+                }
             }
         }.resume()
+        return check
     }
 
 struct ContentView: View {
@@ -83,26 +143,16 @@ struct ContentView: View {
                                                                .cornerRadius(5.0)
                                                                .padding(.bottom, 20)
                               
-                Button(action: {  }) {
                 
-                    
-                                      
-                                  AddSubjectButtonContent()
-                                              }
-                                  
+                Button(action: {  postSubjects(name: self.subject, area: self.area)        }) {AddSubjectButtonContent()
+                                              
+                    }
                                 }
-           
+            
         }
-         
-         
       }
     
-    func postSubjects(name: String, area: String)
-     {
-    let service = TutorAppService()
-        
-        service.postSubjects(name: name, area: area)
-        }
+   
     struct ViewReservations: View {
      var body: some View {
        
@@ -246,9 +296,12 @@ struct ContentView: View {
                             .cornerRadius(5.0)
                             .padding(.bottom, 20)
             
-            Button(action: {self.view = "Home"
+            Button(action: {
                 
-                checkDetails(username: self.username, password: self.password)
+                if(checkDetails(username: self.username, password: self.password) == false)
+                {
+                    self.view = "Home"
+                }
             }) {
                 
             LoginButtonContent()

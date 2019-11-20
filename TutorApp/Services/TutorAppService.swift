@@ -11,7 +11,9 @@ import Alamofire
 
 class TutorAppService {
   func getSubjects(completion: @escaping ([Subject]?) -> ()) {
-    guard let url = URL(string: "http://tutorapp.somee.com/api/subjects") else {
+    
+    var stringfull = "http://tutorapp.somee.com/api/Tutors/" + String(UserDefaults.standard.string(forKey: "id_tutor")!) + "/Subjects"
+    guard let url = URL(string: stringfull) else {
       fatalError("Invalid URL")
     }
     URLSession.shared.dataTask(with: url) { data, response, error in
