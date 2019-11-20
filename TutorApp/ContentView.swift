@@ -9,8 +9,102 @@
 import SwiftUI
 
 var check = false
+
+
+func postTutor(user_id: Int, academic_group_name: String, academic_group_foundation_date: String, academic_group_address: String, birth_date: String){
+       
+    guard let url = URL(string: "http://tutorapp.somee.com/api/users") else
+       {
+return
+         
+     }
+     let body: [String: Any] = ["user_id": user_id, "academic_group_name": academic_group_name,"academic_group_foundation_date": academic_group_foundation_date,"academic_group_address": academic_group_address]
+     let finalBody = try! JSONSerialization.data(withJSONObject: body)
+     
+     var request = URLRequest(url: url)
+     request.httpMethod = "POST"
+     request.httpBody = finalBody
+     
+     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+     URLSession.shared.dataTask(with: request){ (data, response, error) in
+         print(data)
+         
+      let tutor = try? JSONDecoder().decode(Tutor.self, from: data!)
+        DispatchQueue.main.async {
+         //  UserDefaults.standard.set(user.id, forKey: "user_id")
+            print(tutor?.academic_group_name)
+            if(tutor != nil)
+            {
+            checkTutor(user_id: user_id)
+             
+            }
+        }
+        
+     }.resume()
+   
+ }
+
+func checkUsuarioRegistro(username: String, password: String){
+   
+    guard let url = URL(string: "http://tutorapp.somee.com/api/users/check") else
+       {
+return
+         
+     }
+     let body: [String: String] = ["address": "","password": password,"id": "0","last_names":"","username": username, "names":""]
+     
+     let finalBody = try! JSONSerialization.data(withJSONObject: body)
+     
+     var request = URLRequest(url: url)
+     request.httpMethod = "POST"
+     request.httpBody = finalBody
+     
+     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+     URLSession.shared.dataTask(with: request){ (data, response, error) in
+         print(data)
+         
+         let user = try? JSONDecoder().decode(User.self, from: data!)
+         DispatchQueue.main.async {
+          //  UserDefaults.standard.set(user.id, forKey: "user_id")
+             print(user?.names)
+             if(user != nil)
+             {
+             UserDefaults.standard.set(String(user!.id), forKey: "user_id")
+            
+             //postTutor(user_id: user!.id)
+              
+             }
+         }
+     }.resume()
+  
+ }
+
+func postUsuario(address: String, names: String, last_names: String, username: String, password: String){
+       
+    guard let url = URL(string: "http://tutorapp.somee.com/api/users") else
+       {
+return
+         
+     }
+     let body: [String: Any] = ["address": address, "password": password,"id": "0","last_names": last_names,"username": username, "names":names]
+     let finalBody = try! JSONSerialization.data(withJSONObject: body)
+     
+     var request = URLRequest(url: url)
+     request.httpMethod = "POST"
+     request.httpBody = finalBody
+     
+     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+     URLSession.shared.dataTask(with: request){ (data, response, error) in
+         print(data)
+         
+        checkUsuarioRegistro(username : username, password : password)
+        
+     }.resume()
+   
+ }
+
 func postSubjects(name: String, area: String){
-       var check = false
+     
     guard let url = URL(string: "http://tutorapp.somee.com/api/subjects") else
        {
 return
