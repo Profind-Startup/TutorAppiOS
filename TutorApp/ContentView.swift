@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-
+var check = false
 func postSubjects(name: String, area: String){
        var check = false
     guard let url = URL(string: "http://tutorapp.somee.com/api/subjects") else
@@ -16,7 +16,7 @@ func postSubjects(name: String, area: String){
 return
          
      }
-     let body: [String: Any] = ["id": 0,"name": name,"area": area,"id_tutor": UserDefaults.standard.value(forKey: "id_tutor")]
+     let body: [String: Any] = ["id": 0,"name": name,"area": area,"id_tutor": UserDefaults.standard.value(forKey: "tutor_id")]
      
      let finalBody = try! JSONSerialization.data(withJSONObject: body)
      
@@ -35,12 +35,11 @@ return
 
 
 
-func checkTutor(user_id: Int) -> Bool{
+func checkTutor(user_id: Int) {
     
-    var check = false
     guard let url = URL(string: "http://tutorapp.somee.com/api/Users/" + String(user_id) + "/Tutor") else
        {
-return false
+return
          
      }
   
@@ -51,7 +50,7 @@ return false
          let tutor = try? JSONDecoder().decode(Tutor.self, from: data!)
          DispatchQueue.main.async {
           //  UserDefaults.standard.set(user.id, forKey: "user_id")
-            if(tutor?.id != nil)
+            if(tutor != nil)
             {
             print(tutor?.academic_group_name)
              UserDefaults.standard.set(String(tutor!.id), forKey: "tutor_id")
@@ -59,13 +58,13 @@ return false
             }
          }
      }.resume()
-    return check
+   
  }
-    func checkDetails(username: String, password: String) -> Bool{
-          var check = false
+    func checkDetails(username: String, password: String){
+      
        guard let url = URL(string: "http://tutorapp.somee.com/api/users/check") else
           {
-   return false
+   return
             
         }
         let body: [String: String] = ["address": "","password": password,"id": "0","last_names":"","username": username, "names":""]
@@ -84,18 +83,16 @@ return false
             DispatchQueue.main.async {
              //  UserDefaults.standard.set(user.id, forKey: "user_id")
                 print(user?.names)
-                if(user?.id != nil)
+                if(user != nil)
                 {
                 UserDefaults.standard.set(String(user!.id), forKey: "user_id")
                
-                if(checkTutor(user_id: user!.id))
-                    {
-                    check = true
-                    }
+                checkTutor(user_id: user!.id)
+                 
                 }
             }
         }.resume()
-        return check
+     
     }
 
 struct ContentView: View {
@@ -144,8 +141,8 @@ struct ContentView: View {
                                                                .padding(.bottom, 20)
                               
                 
-                Button(action: {  postSubjects(name: self.subject, area: self.area)        }) {AddSubjectButtonContent()
-                                              
+                Button(action: {  postSubjects(name: self.subject, area: self.area);       }) {AddSubjectButtonContent()
+                                            
                     }
                                 }
             
@@ -298,10 +295,12 @@ struct ContentView: View {
             
             Button(action: {
                 
-                if(checkDetails(username: self.username, password: self.password) == false)
-                {
+               checkDetails(username: self.username, password: self.password)
+                if(check == true)
+                 {
                     self.view = "Home"
-                }
+                    }
+                
             }) {
                 
             LoginButtonContent()
@@ -355,6 +354,7 @@ struct ContentView: View {
                                
                               
                               }
+                              }
             
                 
                 
@@ -364,7 +364,7 @@ struct ContentView: View {
     }
 
 }
-    }
+    
 
 
 struct WelcomeText: View {
